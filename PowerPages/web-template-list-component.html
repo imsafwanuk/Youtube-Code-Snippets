@@ -1,0 +1,31 @@
+<!-- prettier-ignore -->
+{% manifest %} 
+    { 
+    "type": "Functional", 
+    "displayName": "List", 
+    "description": "This component displays items using a list", 
+    "tables": ["contact"], 
+    "params": [ 
+        { 
+        "id": "title", 
+        "displayName": "Title", 
+        "description": "Heading for this component" 
+        }, 
+        { 
+          "id": "listElements", 
+          "displayName": "Items separated by comma ','", 
+          "description": "Items you want to display" 
+        }
+      ] 
+    } 
+{% endmanifest %}
+
+
+{% assign my_list = listElements | split: "," %}
+
+<h2>{{ title }}</h2>
+<ul>
+  {% for item in my_list %}
+  <li>{{ item }}</li>
+  {% endfor %}
+</ul>
